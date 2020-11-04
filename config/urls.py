@@ -21,6 +21,9 @@ from apps.users.views import CustomTokenObtainPairView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/users/', include('apps.users.urls')),
+    path('api/v1/genres/', include('apps.genres.urls')),
+    path('api/v1/authors/', include('apps.authors.urls')),
+    path('api/v1/books/', include('apps.books.urls')),
     path('api/v1/token/', CustomTokenObtainPairView.as_view(),
          name='token_obtain_pair'),
     path('api/v1/token/refresh/', jwt_views.TokenRefreshView.as_view(),
