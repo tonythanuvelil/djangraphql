@@ -7,15 +7,20 @@ from .models import Genre
 
 
 class GenreSerializer(serializers.ModelSerializer):
+    created_at = serializers.DateTimeField(format="%Y-%m-%d %H:%M:%S")
+
     class Meta:
         model = Genre
         fields = '__all__'
 
 
 class GenreView(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
-    def get(self, request, pk):
-        genre = Genre.objects.get(pk=pk)
-        serializer = GenreSerializer(genre)
+    def get(self, request, pk=None):
+        if pk is not None:
+            genre = Genre.objects.filter(pk=pk)
+        else:
+            genre = Genre.objects.values()
+        serializer = GenreSerializer(genre, many=True)
         return Response(serializer.data)

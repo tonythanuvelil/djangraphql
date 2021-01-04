@@ -3,7 +3,7 @@ from .models import Author
 
 
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'country', )
+    list_display = ('id', 'first_name', 'last_name', 'country', )
 
 
 admin.site.register(Author, AuthorAdmin)

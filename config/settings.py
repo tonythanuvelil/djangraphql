@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'graphene_django',
     'apps.users',
     'apps.genres',
     'apps.books',
@@ -83,7 +84,7 @@ AUTH_USER_MODEL = 'users.User'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'library_system_db',
+        'NAME': 'django_graphql',
         'USER': 'admin',
         'PASSWORD': '1234',
         'HOST': 'localhost',
@@ -138,3 +139,7 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = 'media'
 MEDIA_URL = '/media/'
+
+GRAPHENE = {
+    'SCHEMA': 'config.schema.schema'
+}
